@@ -1,0 +1,63 @@
+@startuml
+!theme plain
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "Pokemon" as Pokemon {
+  * POKE_ID : number <<generated>>
+  ---
+  * OWNER_ID : number <<Client.OWNER_ID>>
+  * POKEDEX_NUM : number <<PokeDex.DEX_NUM>>
+  BIRTH_ID : number <<Birthday.BIRTH_ID>>
+  NAME : text
+  * LEVEL : number
+  * GENDER : text
+}
+
+entity "Birthday" as Birthday {
+  * BIRTH_ID : number <<generated>>
+  --
+  * PARENT_M : number <<Pokemon.POKE_ID>>
+  * PARENT_F : number <<Pokemon.POKE_ID>>
+  BIRTHDAY : date
+}
+
+entity "PokeDex" as PokeDex {
+  * DEX_NUM : number
+  --
+  DEX_NAME : text
+  TYPE : text
+  WEIGHT : number
+  HEIGHT : number
+}
+
+entity "Client" as Client {
+  * OWNER_ID : number <<generated>>
+  --
+  NAME : text
+  ADDRESS : text
+  PHNUM : text
+}
+
+entity "Storage" as Storage {
+  * ROOM_NUM : text
+}
+
+entity "Booking" as Booking {
+  * BOOKING_ID : number <<generated>>
+  --
+  * ROOM_NUM : number <<Storage.ROOM_NUM>>
+  * POKE_ID : number <<Pokemon.POKE_ID>>
+  * DATE_IN : date
+  DATE_OUT : date
+}
+
+PokeDex ||..o{ Pokemon
+Client ||..o{ Pokemon
+Pokemon ||..o{ Booking
+Booking }o..|| Storage
+Birthday |o..|{ Pokemon
+@enduml
