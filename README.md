@@ -19,4 +19,4 @@ It will be important to keep track of who owns what Pokémon. Mates will be limi
 - A room can only store a single Pokémon
 
 ## Database Design
-![Database Design.png](design%2FDatabase%20Design.png)
+![database_design.png](design%2Fdatabase_design.png)
