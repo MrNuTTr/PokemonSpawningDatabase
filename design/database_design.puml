@@ -11,17 +11,16 @@ entity "Pokemon" as Pokemon {
   ---
   * OWNER_ID : number <<Client.OWNER_ID>>
   * POKEDEX_NUM : number <<PokeDex.DEX_NUM>>
-  BIRTH_ID : number <<Birthday.BIRTH_ID>>
   NAME : text
-  * LEVEL : number
-  * GENDER : text
+  LEVEL : number
+  GENDER : text
 }
 
 entity "Birthday" as Birthday {
-  * BIRTH_ID : number <<generated>>
+  * CHILD : number <<Pokemon.POKE_ID>>
+  PARENT_M : number <<Pokemon.POKE_ID>>
+  PARENT_F : number <<Pokemon.POKE_ID>>
   --
-  * PARENT_M : number <<Pokemon.POKE_ID>>
-  * PARENT_F : number <<Pokemon.POKE_ID>>
   BIRTHDAY : date
 }
 
@@ -39,7 +38,7 @@ entity "Client" as Client {
   --
   NAME : text
   ADDRESS : text
-  PHNUM : text
+  PHONE_NUM : text
 }
 
 entity "Storage" as Storage {
