@@ -1,4 +1,4 @@
-## Pokemon Breeding Database
+## Pokemon Spawning Database
 
 ### Introduction
 Welcome to the Pokémon Breeding & Research Division. You are being hired to help our startup company gain a solid foothold into the industry. We, the board of directors, understand that an operation like this requires technical expertise to setup the foundation of everything we do; that is where you come in. 
