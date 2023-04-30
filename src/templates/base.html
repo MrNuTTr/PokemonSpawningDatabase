@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        nav a {
+            color: #376ada;
+            font-size: 1.8em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .white {
+            padding: 20px;
+            margin: 10px;
+            background-color: #eeeeee
+        }
+
+        .blue {
+            padding: 20px;
+            margin: 10px;
+            background-color: #e0f2ff;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('pokemon') }}">Pokemon</a>
+        <a href="{{ url_for('clients') }}">Clients</a>
+        <a href="{{ url_for('bookings') }}">Bookings</a>
+        <a href="{{ url_for('pokedex') }}">PokeDex</a>
+        <a href="{{ url_for('add_pokemon') }}">Add Pokemon</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

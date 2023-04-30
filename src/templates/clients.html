@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Client List</h2>
+    {% for client in clients %}
+        <div class='blue'>
+            <h3>{{ client[1] }}</h3>
+            <p>ID: {{ client[0] }}</p>
+            <p>Address: {{ client[2] }}</p>
+            <p>Phone Number: {{ client[3] }}</p>
+            <a href="{{ url_for('client', client_id=client[0]) }}/">{{client[1]}}'s Pokemon</a>
+        </div>
+    {% endfor %}
+{% endblock %}

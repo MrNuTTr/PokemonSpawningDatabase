@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ header_text }} {% endblock %}</h2>
+    {% for poke in pokemon %}
+        <div class='blue'>
+            <h3>{{ poke[3] }}</h3>
+            <p>Gender: {{ poke[5] }}</p>
+            <p>Level: {{ poke[4] }}</p>
+            <p>Birthday: {{ poke[6] }}</p>
+            <p>Unique ID: {{ poke[0] }}</p>
+            <p><a href="{{ url_for('pokedex', dex_num=poke[2]) }}/">PokeDex information</a></p>
+            <p><a href="{{ url_for('client', client_id=poke[1]) }}/">Owner information</a></p>
+            <p><a href="{{ url_for('parents', pokemon_id=poke[0]) }}/">Parent information</a></p>
+            <p><a href="{{ url_for('children', pokemon_id=poke[0]) }}/">See children</a></p>
+        </div>
+    {% endfor %}
+{% endblock %}

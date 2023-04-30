@@ -14,14 +14,13 @@ entity "Pokemon" as Pokemon {
   NAME : text
   LEVEL : number
   GENDER : text
+  DOB : date
 }
 
-entity "Birthday" as Birthday {
+entity "Family" as Family {
   * CHILD : number <<Pokemon.POKE_ID>>
   PARENT_M : number <<Pokemon.POKE_ID>>
   PARENT_F : number <<Pokemon.POKE_ID>>
-  --
-  BIRTHDAY : date
 }
 
 entity "PokeDex" as PokeDex {
@@ -58,5 +57,5 @@ PokeDex ||..o{ Pokemon
 Client ||..o{ Pokemon
 Pokemon ||..o{ Booking
 Booking }o..|| Storage
-Birthday |o..|{ Pokemon
+Family |o..|{ Pokemon
 @enduml

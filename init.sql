@@ -4,7 +4,7 @@
 
 DROP TABLE IF EXISTS Booking;
 DROP TABLE IF EXISTS Storage;
-DROP TABLE IF EXISTS Birthday;
+DROP TABLE IF EXISTS Family;
 DROP TABLE IF EXISTS Pokemon;
 DROP TABLE IF EXISTS PokeDex;
 DROP TABLE IF EXISTS Client;
@@ -36,15 +36,15 @@ CREATE TABLE Pokemon (
     pokedex_num int references PokeDex(dex_num),
     name text,
     level int not null check (level between 1 and 100),
-    gender text not null,
+    gender char(1) not null,
+    dob date,
     PRIMARY KEY (poke_id)
 );
 
-CREATE TABLE Birthday (
+CREATE TABLE Family (
     child int unique references Pokemon(poke_id),
     parent_m int references Pokemon(poke_id),
     parent_f int references Pokemon(poke_id),
-    birthday date,
     PRIMARY KEY (child, parent_m, parent_f)
 );
 
@@ -133,29 +133,29 @@ VALUES ('A3');
 
 --Pokemon Table Inserts
 INSERT INTO Pokemon
-VALUES (23489, 100001, 1, 'Bulby', 20, 'Male');
+VALUES (23489, 100001, 1, 'Bulby', 20, 'M', NULL);
 
 INSERT INTO Pokemon
-VALUES (23765, 100001, 4, 'Charmander', 5, 'Female');
+VALUES (23765, 100001, 4, 'Charmander', 5, 'F', NULL);
 
 INSERT INTO Pokemon
-VALUES (48376, 100001, 132, 'Ditto', 9, 'Male');
+VALUES (48376, 100001, 132, 'Ditto', 9, 'M', NULL);
 
 INSERT INTO Pokemon
-VALUES (01928, 100001, 7, 'Squirty', 35, 'Female');
+VALUES (01928, 100001, 7, 'Squirty', 35, 'F', NULL);
 
 INSERT INTO Pokemon
-VALUES (61726, 100001, 7, 'Squirtle', 1, 'Male');
+VALUES (61726, 100001, 7, 'Squirtle', 1, 'M', '4-21-2023');
 
 INSERT INTO Pokemon
-VALUES (23498, 100001, 132, 'Diiito', 3, 'Female');
+VALUES (23498, 100001, 132, 'Diiito', 3, 'F', '4-15-2023');
 
 --Birthday Table Inserts
-INSERT INTO Birthday
-VALUES (61726, 48376, 01928, '4-21-2023');
+INSERT INTO Family
+VALUES (61726, 48376, 01928);
 
-INSERT INTO birthday
-VALUES (23498, 48376, 01928, '4-15-2023');
+INSERT INTO Family
+VALUES (23498, 48376, 01928);
 
 --Booking Table Inserts
 INSERT INTO Booking

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a Pokemon {% endblock %}</h1>
+    <form method="post">
+        <label for="owner_id">Pokemon Owner</label>
+            <select name="owner_id" id="owner_id">
+            {% for owner in owners %}
+                <option value="{{ owner[0] }}">
+                    {{ owner[1] }}
+                </option>
+            {% endfor %}
+            </select>
+
+        <p>
+            <label for="pokedex">Pokedex Number </label>
+            <select id="pokedex" name="pokedex">
+            {% for dex in pokedex %}
+                <option value="{{ dex[0] }}">
+                    {{ dex[1] }}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="name">Nickname </label>
+            <input type="text" name="name"
+                   placeholder="Mr. Bulby">
+            </input>
+        </p>
+
+        <p>
+            <label for="level">Pokemon Level </label>
+            <input type="number" name="level"
+                   placeholder="5">
+            </input>
+        </p>
+
+        <p>
+            <label for="gender">Gender </label>
+            <select id="gender" name="gender">
+                <option value="M">
+                    Male
+                </option>
+                <option value="F">
+                    Female
+                </option>
+            </select>
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

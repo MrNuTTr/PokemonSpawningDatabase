@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ header_text }} {% endblock %}</h2>
+    {% for dex in pokedex %}
+        <div class='blue'>
+            <h3>{{ dex[1] }}</h3>
+            <p>PokeDex Number: {{ dex[0] }}</p>
+            <p>Type: {{ dex[2] }}</p>
+            <p>Weight: {{ dex[3] }}</p>
+            <p>Height: {{ dex[4] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
