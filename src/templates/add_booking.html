@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Enter booking information {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="room_num">Room Number </label>
+            <select name="room_num" id="room_num">
+            {% for room in rooms %}
+                <option value="{{ room[0] }}">
+                    {{ room[0] }}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="pokemon">Pokemon to store </label>
+            <select name="pokemon" id="pokemon">
+            {% for poke in pokemon %}
+                <option value="{{ poke[0] }}">
+                    {{ poke[3] }}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="date_in">Date of check-in </label>
+            <input type="date" name="date_in" id="date_in"
+                   value="2023-30-4">
+        </p>
+
+        <p>
+            <label for="date_out">Date of check-out </label>
+            <input type="date" name="date_out" id="date_out"
+                   value="2023-30-6">
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

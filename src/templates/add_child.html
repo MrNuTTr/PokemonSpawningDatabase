@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Enter parent information {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="father">Father </label>
+            <select name="father" id="father">
+            {% for male in males %}
+                <option value="{{ male[0] }}">
+                    {{ male[3] }}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="mother">Mother </label>
+            <select name="mother" id="mother">
+            {% for female in females %}
+                <option value="{{ female[0] }}">
+                    {{ female[3] }}
+                </option>
+            {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}

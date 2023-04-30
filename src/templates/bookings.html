@@ -9,6 +9,7 @@
             <p>Check in day: {{ booking[3] }}</p>
             <p>Check out day: {{ booking[4] }}</p>
             <p>Booking ID: {{ booking[0] }}</p>
+            <p><a href="{{ url_for('update_booking', booking_id=booking[0]) }}/">Update booking</a></p>
         </div>
     {% endfor %}
 {% endblock %}
