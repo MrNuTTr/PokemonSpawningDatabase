@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{% block title %} All Current Residents {% endblock %}</h2>
+    <h2>{% block title %} All Past Bookings {% endblock %}</h2>
     {% for booking in bookings %}
         <div class='blue'>
             <h3>Room Number {{ booking[1] }}</h3>
@@ -9,7 +9,6 @@
             <p>Check in day: {{ booking[3] }}</p>
             <p>Check out day: {{ booking[4] }}</p>
             <p>Booking ID: {{ booking[0] }}</p>
-            <p><a href="{{ url_for('update_booking', booking_id=booking[0]) }}/">Update booking</a></p>
         </div>
     {% endfor %}
 {% endblock %}

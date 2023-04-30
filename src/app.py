@@ -122,13 +122,27 @@ def bookings():
     cur = conn.cursor()
 
     cur.execute(f'SELECT booking_id, room_num, poke_id, date_in, date_out, name '
-                f'FROM Booking NATURAL JOIN Pokemon;')
+                f'FROM Booking NATURAL JOIN Pokemon '
+                f'WHERE date_out is null;')
     books = cur.fetchall()
 
     cur.close()
     conn.close()
     return render_template('bookings.html', bookings=books)
 
+@app.route('/booking/past/')
+def bookings_past():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute(f'SELECT booking_id, room_num, poke_id, date_in, date_out, name '
+                f'FROM Booking NATURAL JOIN Pokemon '
+                f'WHERE date_out is not null;')
+    books = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return render_template('past_bookings.html', bookings=books)
 
 @app.route('/pokedex/', defaults={'dex_num': None})
 @app.route('/pokedex/<dex_num>/')
