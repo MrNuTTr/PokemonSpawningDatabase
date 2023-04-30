@@ -4,7 +4,6 @@ import psycopg2
 import random
 from flask import Flask, render_template, request, url_for, redirect
 
-
 app = Flask(__name__)
 
 
@@ -130,6 +129,7 @@ def bookings():
     conn.close()
     return render_template('bookings.html', bookings=books)
 
+
 @app.route('/booking/past/')
 def bookings_past():
     conn = get_db_connection()
@@ -143,6 +143,7 @@ def bookings_past():
     cur.close()
     conn.close()
     return render_template('past_bookings.html', bookings=books)
+
 
 @app.route('/pokedex/', defaults={'dex_num': None})
 @app.route('/pokedex/<dex_num>/')
