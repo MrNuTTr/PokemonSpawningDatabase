@@ -152,13 +152,11 @@ def add_pokemon():
     cur = conn.cursor()
 
     if request.method == 'POST':
-        print(request.form)
-
         poke_id = random.randint(a=10000, b=99999)
         owner = request.form['owner_id']
-        dex = request.form.get('pokedex')
+        dex = request.form['pokedex']
         name = request.form['name']
-        level = int(request.form['level'])
+        level = request.form['level']
         gender = request.form.get('gender')
 
         cur.execute('INSERT INTO Pokemon '
@@ -167,7 +165,7 @@ def add_pokemon():
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('pokemon', pokemon_id=poke_id))
 
     cur.execute('SELECT * FROM Client;')
     owners = cur.fetchall()
